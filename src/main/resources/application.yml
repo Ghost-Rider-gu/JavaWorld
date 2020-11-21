@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: Java World
+  # Datasource setting
+  datasource:
+    url: jdbc:mysql://localhost:3306/javaworld
+    username: root
+    password:
+    schema:
+      - user-schema.slq
+      - db-schema.sql
+    data:
+      - data.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+# Server setting
+server:
+  port: 8090
+  servlet:
+    context-path: "/java-world/api"
+
+# Logger setting
+logging:
+  file:
+    name: "JavaWorld.log"
+    path: "/log/"
+    max-size: 2MB
+    clean-history-on-start: false
+  level: warn
+  pattern:
+    file: "%d{yyyy-MM-dd } [%thread] %-5level %logger{36} - %msg%n"
